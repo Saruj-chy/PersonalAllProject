@@ -45,6 +45,8 @@ public abstract class MoreDataLoadAdapter extends RecyclerView.Adapter<RecyclerV
 
         if(position == (mItemList.size() - 1)){
             loadNextPage(mPageNumber+1);
+            AppController.getAppController().getInAppNotifier().log("page", position+"  "+ (mItemList.size() - 1) );
+            AppController.getAppController().getInAppNotifier().showToast( position+" >-< "+ (mItemList.size() - 1) );
         }
 
         MoreDataModel mItem = mItemList.get(position);

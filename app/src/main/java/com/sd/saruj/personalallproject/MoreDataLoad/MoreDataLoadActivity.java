@@ -1,6 +1,7 @@
 package com.sd.saruj.personalallproject.MoreDataLoad;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,20 +29,27 @@ public class MoreDataLoadActivity extends AppCompatActivity {
     String URL = "https://jsonplaceholder.typicode.com/posts?userId=" ;
 
     RecyclerView mRecyclerView;
+    NestedScrollView mNestedScroll ;
     MoreDataLoadAdapter moreDataLoadAdapter ;
     ArrayList<MoreDataModel> mItemList ;
+
+    int pageNumb = 1 ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_data_load);
 
         mRecyclerView = findViewById(R.id.recyclerview) ;
+        mNestedScroll = findViewById(R.id.nested_scroll) ;
         mItemList = new ArrayList<>() ;
 
         initializeAdapter();
 
 
         loadProducts(1);
+        loadNextPageList() ;
 
     }
 
@@ -98,12 +106,30 @@ public class MoreDataLoadActivity extends AppCompatActivity {
             @Override
             public void loadNextPage(int pageNumber) {
                 AppController.getAppController().getInAppNotifier().log("pageNumb: ", "act:"+pageNumber+"" );
-                loadProducts(pageNumber);
+                pageNumb = pageNumber ;
                 moreDataLoadAdapter.setPageNumber(pageNumber);
 
             }
         } ;
         mRecyclerView.setAdapter(moreDataLoadAdapter);
+        mRecyclerView.setHasFixedSize(false);
+
+        mRecyclerView.setNestedScrollingEnabled(false);
+    }
+
+    private void loadNextPageList() {
+        if (mNestedScroll != null ) {
+            mNestedScroll.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+
+                    AppController.getAppController().getInAppNotifier().log("nested", "yes"+pageNumb);
+                    loadProducts(pageNumb);
+
+                }
+            });
+        }
+
+
     }
 
 }

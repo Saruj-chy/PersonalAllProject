@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PersonalAllProject">
-        <activity android:name=".MoreDataLoad.MoreDataLoadActivity"></activity>
+
+        <activity android:name=".ListDataSelect.ListDataSelectActivity"/>
+        <activity android:name=".MoreDataLoad.MoreDataLoadActivity" />
         <activity android:name=".VolleySessionToken.AllSiteActivity" />
         <activity android:name=".VolleySessionToken.TestingSessionActivity" />
         <activity android:name=".MainActivity">
