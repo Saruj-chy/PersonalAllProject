@@ -5,6 +5,8 @@ import java.lang.reflect.Field;
 public class ListDataModel {
     public String username, phone ;
 
+    public String image ;
+
     public ListDataModel() {
     }
 
@@ -18,5 +20,9 @@ public class ListDataModel {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

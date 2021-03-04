@@ -19,11 +19,11 @@ public class AppImageLoader {
     public static void loadImageInView(String url, ImageView imageView) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(imageView);
+            Picasso.get().load(R.drawable.smart_shop).into(imageView);
             return;
         }
 
-        Picasso.get().load(url).error(R.drawable.facebook).into(imageView, new Callback() {
+        Picasso.get().load(url).error(R.drawable.smart_shop).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 AppController.getAppController().getInAppNotifier().log("Picasso", "Success");
@@ -42,11 +42,11 @@ public class AppImageLoader {
     public static void loadImageInView(String url, ImageView imageView, final Callback callback) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(imageView);
+            Picasso.get().load(R.drawable.smart_shop).into(imageView);
             return;
         }
 
-        Picasso.get().load(url).error(R.drawable.facebook).into(imageView, new Callback() {
+        Picasso.get().load(url).error(R.drawable.smart_shop).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 AppController.getAppController().getInAppNotifier().log("Picasso", "Success");
@@ -78,11 +78,11 @@ public class AppImageLoader {
     // Load an image from the uri into an imageView
     public static boolean loadImageInView(Uri uri, ImageView imageView) {
         if (uri.toString().trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(imageView);
+            Picasso.get().load(R.drawable.smart_shop).into(imageView);
             return true;
         }
 
-        Picasso.get().load(uri).error(R.drawable.facebook).into(imageView);
+        Picasso.get().load(uri).error(R.drawable.smart_shop).into(imageView);
 
         return true;
     }
@@ -90,11 +90,11 @@ public class AppImageLoader {
     public static void loadImageInView(String url, CircleImageView circleImageView) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(circleImageView);
+            Picasso.get().load(R.drawable.smart_shop).into(circleImageView);
             return;
         }
 
-        Picasso.get().load(url).error(R.drawable.facebook).into(circleImageView, new Callback() {
+        Picasso.get().load(url).error(R.drawable.smart_shop).into(circleImageView, new Callback() {
             @Override
             public void onSuccess() {
                 AppController.getAppController().getInAppNotifier().log("Picasso", "Success");
@@ -112,11 +112,11 @@ public class AppImageLoader {
     public static void loadImageInView(String url, CircleImageView circleImageView, int width, int height) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).resize(width, height).into(circleImageView);
+            Picasso.get().load(R.drawable.smart_shop).resize(width, height).into(circleImageView);
             return;
         }
 
-        Picasso.get().load(url).error(R.drawable.facebook).resize(width, height).into(circleImageView, new Callback() {
+        Picasso.get().load(url).error(R.drawable.smart_shop).resize(width, height).into(circleImageView, new Callback() {
             @Override
             public void onSuccess() {
                 AppController.getAppController().getInAppNotifier().log("Picasso", "Success");
@@ -135,11 +135,11 @@ public class AppImageLoader {
     public static void loadImageInView(String url, ImageView imageView, int width, int height) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).resize(width, height).into(imageView);
+            Picasso.get().load(R.drawable.smart_shop).resize(width, height).into(imageView);
             return;
         }
 
-        Picasso.get().load(url).error(R.drawable.facebook).resize(width, height).into(imageView);
+        Picasso.get().load(url).error(R.drawable.smart_shop).resize(width, height).into(imageView);
     }
 
     // Load an image from resource and in case of failure, load another resource(default) into an imageView
@@ -152,7 +152,7 @@ public class AppImageLoader {
     public static void loadImageInView(String url, int defaultResourceId, ImageView imageView) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(imageView);
+            Picasso.get().load(R.drawable.smart_shop).into(imageView);
             return;
         }
 
@@ -165,7 +165,7 @@ public class AppImageLoader {
     public static void loadImageInView(String url, final ImageView imageView, final IImageLoadedCallback callback) {
 
         if (url.trim().length() == 0) {
-            Picasso.get().load(R.drawable.facebook).into(imageView, new Callback() {
+            Picasso.get().load(R.drawable.smart_shop).into(imageView, new Callback() {
                 @Override
                 public void onSuccess() {
                     AppController.getAppController().getInAppNotifier().log("Picasso", "DEfault Image Set");
@@ -181,7 +181,7 @@ public class AppImageLoader {
         }
 
 
-        Picasso.get().load(url).error(R.drawable.facebook).into(imageView, new Callback() {
+        Picasso.get().load(url).error(R.drawable.smart_shop).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
                 AppController.getAppController().getInAppNotifier().log("Picasso", "Success");

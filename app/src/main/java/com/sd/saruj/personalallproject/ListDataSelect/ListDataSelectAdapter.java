@@ -5,15 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sd.saruj.personalallproject.R;
 import com.sd.saruj.personalallproject.controller.AppController;
+import com.sd.saruj.personalallproject.controller.AppImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -52,14 +56,14 @@ public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 if(((ItemViewHolder) holder).mCheckBox.isChecked()){
                     ((ItemViewHolder) holder).mCheckBox.setVisibility(View.GONE);
                     ((ItemViewHolder) holder).mCheckBox.setChecked(false);
-                    mPhoneList.add(mItem.getPhone()) ;
+                    mPhoneList.remove(mItem.getPhone()) ;
                 }else{
                     ((ItemViewHolder) holder).mCheckBox.setVisibility(View.VISIBLE);
                     ((ItemViewHolder) holder).mCheckBox.setChecked(true);
-                    mPhoneList.remove(mItem.getPhone()) ;
+                    mPhoneList.add(mItem.getPhone()) ;
                 }
                 onCheckItemList.OnCheckItemList(mPhoneList) ;
-//                    AppController.getAppController().getInAppNotifier().showToast("  checked: "+mCheckBox.isChecked()+" phnList length: "+ mPhoneList.size() );
+                    AppController.getAppController().getInAppNotifier().showToast(" phnList length: "+ mPhoneList.size() );
             }
         });
 
@@ -74,6 +78,7 @@ public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         TextView mName, mPhone ;
         CheckBox mCheckBox ;
+        CircleImageView mCircleImageView ;
 
 
         public ItemViewHolder(View itemView) {
@@ -82,11 +87,13 @@ public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             mName = itemView.findViewById(R.id.text_name);
             mPhone = itemView.findViewById(R.id.text_phone);
             mCheckBox = itemView.findViewById(R.id.checkbox);
+            mCircleImageView = itemView.findViewById(R.id.circle_image);
         }
 
         public void bind(ListDataModel mItem) {
             mName.setText(mItem.getUsername());
             mPhone.setText(mItem.getPhone());
+            AppImageLoader.loadImageInView(mItem.getImage(), R.drawable.smart_shop, mCircleImageView);
 
 
         }
