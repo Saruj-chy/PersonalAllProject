@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sd.saruj.personalallproject.R;
@@ -76,9 +77,10 @@ public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mName, mPhone ;
+        TextView mName, mPhone, mIdentifier ;
         CheckBox mCheckBox ;
         CircleImageView mCircleImageView ;
+        CardView mIdentifierCard ;
 
 
         public ItemViewHolder(View itemView) {
@@ -86,16 +88,30 @@ public class ListDataSelectAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             mName = itemView.findViewById(R.id.text_name);
             mPhone = itemView.findViewById(R.id.text_phone);
+            mIdentifier = itemView.findViewById(R.id.text_identifier);
             mCheckBox = itemView.findViewById(R.id.checkbox);
             mCircleImageView = itemView.findViewById(R.id.circle_image);
+            mIdentifierCard = itemView.findViewById(R.id.card_identifier);
         }
 
         public void bind(ListDataModel mItem) {
             mName.setText(mItem.getUsername());
             mPhone.setText(mItem.getPhone());
-            AppImageLoader.loadImageInView(mItem.getImage(), R.drawable.smart_shop, mCircleImageView);
+            AppController.getAppController().getInAppNotifier().log("singleText", "image: "+mItem.getImage() );
 
-
+            if(mItem.getImage()==""){
+//                String name = "বাংলা";
+//                String SingleText = name.substring(0,1);
+                String SingleText = mItem.getUsername().substring(0,1);
+                AppController.getAppController().getInAppNotifier().log("singleText", "text: "+SingleText );
+                mIdentifier.setText(SingleText);
+                mIdentifierCard.setVisibility(View.VISIBLE);
+                mCircleImageView.setVisibility(View.GONE);
+            }else{
+                AppImageLoader.loadImageInView(mItem.getImage(), R.drawable.smart_shop, mCircleImageView);
+                mIdentifierCard.setVisibility(View.GONE);
+                mCircleImageView.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
